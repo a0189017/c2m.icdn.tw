@@ -1,0 +1,97 @@
+@charset "UTF-8"
+@import compass
+@import "_variable.sass"
+@import "_mixin.sass"
+.theme-list
+    overflow: hidden
+    li
+        float: left
+        position: relative
+        width: 25%
+        +breakpoint(pc)
+            width: 33.333%
+        +breakpoint(min_pc)
+            width: 50%
+        +breakpoint(mobile)
+            width: 100%
+        >a
+            display: block
+            width: 100%
+            padding-bottom: 70%
+            +bg-cover(center)
+            &::before
+                +psa(null,null,0,0,1)
+                content: ''
+                width: 100%
+                height: 60%
+                +background-image(linear-gradient(180deg, transparent, rgba(0,0,0,.9)))
+            +breakpoint(up_pad)
+                &:hover
+                    opacity: .8
+            +breakpoint(mobile)
+                padding-bottom: 40%
+                &::before
+                    +background-image(linear-gradient(180deg, transparent, rgba(0,0,0,.7)))
+    .pr-block
+        >a
+            &::before
+                display: none
+        +breakpoint(pc)
+            width: 33.333%
+        +breakpoint(min_pc)
+            width: 50%
+        +breakpoint(mobile)
+            width: 100%
+            >a
+                padding-bottom: 70%
+    .welcome-block
+        +breakpoint(pad)
+            width: 100%
+        .welcome-inner
+            padding-bottom: 70%
+            +background-image(linear-gradient(-20deg, #00cdac 0%, #8ddad5 100%))
+            +breakpoint(pad)
+                padding-bottom: 0
+            .welcome-info
+                +psa(0,null,null,0,1)
+                padding: 60px 40px 0
+                color: white
+                letter-spacing: 2px
+                font-size: 36px
+                line-height: 1.4
+                font-weight: 500
+                +breakpoint_spec(1200px)
+                    font-size: 30px
+                +breakpoint(pad)
+                    position: relative
+                    padding: 25px 30px
+                    font-size: 18px
+                    text-align: center
+                &::before
+                    content: ''
+                    display: block
+                    margin-bottom: 20px
+                    width: 130px
+                    height: 6px
+                    background-color: white
+                    +breakpoint(pad)
+                        display: none
+
+    .theme-info
+        +psa(null,null,0,0,2)
+        padding: 25px
+        color: white
+        letter-spacing: 1px
+        .theme-detail
+            font-size: 14px
+            padding-right: 2px
+            color: rgba(255,255,255,.6)
+            b
+                padding-right: 5px
+                color: white
+        .theme-name
+            margin-bottom: 10px
+            font-size: 38px
+            font-weight: bold
+            font-style: italic
+            font-family: 'Times New Roman'

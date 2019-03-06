@@ -1,0 +1,333 @@
+@charset "UTF-8"
+@import compass
+@import "_variable.sass"
+@import "_mixin.sass"
+@font-face
+    font-family: BebasNeueRegular
+    src: url(../font/BebasNeueRegular.otf)
+.design
+    display: flex
+    +breakpoint(min_pc)
+        display: block
+    .preview-area,
+    .work-area
+        height: calc(100vh - 70px)
+        min-height: 600px
+        +breakpoint(min_pc)
+            height: auto
+            min-height: 0
+.preview-area
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-basis: calc(100% - 350px)
+    .pd-img,
+    .preview-img,
+    .preview-pos
+        margin: 0 auto
+        width: 600px
+        height: 600px
+        +breakpoint(min_pc)
+            width: 100%
+            max-width: 600px
+            height: auto
+
+
+    .pd-img
+        +bg-contain(center)
+        +breakpoint(min_pc)
+            padding-bottom: 100%
+    .preview-pos
+        display: none
+        &.is-acted
+            display: block
+    .view-tool-list
+        +psa(30px,20px,null,null,2)
+        width: 40px
+        background-color: white
+        +box-shadow(0 0 20px 0 rgba(0,0,0,.1))
+        +border-radius(5px)
+        overflow: hidden
+        li
+            display: block
+            width: 40px
+            height: 40px
+            line-height: 40px
+            text-align: center
+            color: $font-dark
+            border-bottom: 1px solid rgba(0,0,0,.04)
+            cursor: pointer
+            font-size: 18px
+            &:last-child
+                border-bottom: 0
+            +breakpoint(up_pad)
+                &:hover
+                    font-size: 22px
+                    background-color: rgba(0,0,0,.01)
+
+.work-area
+    display: flex
+    position: relative
+    flex-basis: 350px
+    background-color: white
+    +box-shadow(0 0 20px 0 rgba(0,0,0,.1))
+    +breakpoint(min_pc)
+        width: 100%
+    .btn-pay
+        +psa(null,0,0,null,2)
+        width: 100%
+        height: 60px
+        line-height: 60px
+        text-align: center
+        background-color: $primary-color
+        color: white
+        font-size: 15px
+        font-weight: bold
+        +box-shadow(0 2px 10px rgba(0,0,0,0.2))
+        i,
+        .price
+            vertical-align: middle
+            font-size: 32px
+            font-weight: normal
+        +breakpoint(min_pc)
+            height: 70px
+            line-height: 70px
+
+.tool-box-wrap
+    overflow-y: auto
+    overflow-x: hidden
+    padding-bottom: 70px
+    +breakpoint(min_pc)
+        padding-bottom: 0
+.tool-list
+    background-color: #616161
+    flex-basis: $header-h
+    height: calc(100% - 60px)
+    +breakpoint(min_pc)
+        padding-bottom: 60px
+        height: auto
+    .tool-item
+        width: $header-h
+        height: $header-h
+        text-align: center
+        color: $font-light
+        border-bottom: 1px solid rgba(255,255,255,.1)
+        cursor: pointer
+        i
+            vertical-align: middle
+            line-height: $header-h
+        +breakpoint(up_pad)
+            &:hover
+                color: white
+                background-color: rgba(255,255,255,.1)
+        &.is-acted
+            background-color: white
+            color: $font-dark
+
+.tool-box
+    padding: 40px 40px
+    flex-basis: calc(100% - 70px)
+    color: $font-dark
+    +breakpoint(min_pc)
+        padding-bottom: 100px
+    .tool-name
+        margin-bottom: 2em
+        font-size: 17px
+        font-weight: bold
+    .tool-sub-name
+        margin-bottom: 10px
+        font-size: 15px
+        font-weight: bold
+        color: $font-light
+    .tip-text
+        margin-bottom: 2em
+        font-size: 13px
+        color: $font-light
+        line-height: 1.4
+    select
+        margin-bottom: 10px
+        width: 100%
+    &.tool-text
+        .tool-name
+            margin-bottom: 0
+        .form-row
+            margin-top: 1em
+
+.style-list
+    margin-bottom: 50px
+    font-size: 0
+    .style-item
+        margin-right: 8px
+        margin-bottom: 10px
+        display: inline-block
+        vertical-align: middle
+        font-weight: bold
+        text-align: center
+        +border-radius(5px)
+        color: $font-light
+        cursor: pointer
+        font-size: 15px
+        &:hover
+            +box-shadow(0 2px 10px rgba(0,0,0,0.2))
+    &:last-child
+        margin-bottom: 0
+    &.style-selector
+        .style-item
+            width: 50px
+            height: 50px
+            line-height: 46px
+            i
+                line-height: 46px
+            &.is-acted
+                +box-shadow(0 2px 10px rgba(0,0,0,0.2))
+                background-color: $primary-color
+                color: white
+    &.style-color
+        .style-item
+            width: 40px
+            height: 40px
+            line-height: 36px
+            +bg-cover(center)
+            i
+                line-height: 36px
+                color: white
+                font-size: 30px
+                colro: white
+                &.black
+                    color: #666
+            &.is-acted
+                +box-shadow(0 2px 10px rgba(0,0,0,0.2))
+
+///
+.runfor-preview
+    width: 100%
+    height: 100%
+    .text
+        color: black
+        font-family: BebasNeueRegular
+        text-align: center
+        white-space: nowrap
+
+    .front
+        position: relative
+        .text
+            +psa(21%,null,null,50%,1)
+            +transform(translate(-50%,0) scaleX(0.8))
+            &::after
+                content: ''
+                +psa(null,null,-4px,0,1)
+                width: 100%
+                height: 4px
+                background-color: black
+                @media only screen and (max-width: 600px)
+                    bottom: -3px
+                    height: 3px
+        .front-static
+            padding-bottom: 10%
+            font-size: 1.3em
+            letter-spacing: .27em
+            margin-right: -.27em
+            line-height: 1
+            @media only screen and (max-width: 600px)
+                font-size: 3.4vw
+        .text-front
+            font-size: 4em
+            letter-spacing: .14em
+            margin-right: -.14em
+            line-height: normal
+            @media only screen and (max-width: 600px)
+                font-size: 10vw
+
+    .left
+        position: relative
+        .text
+            +psa(228px,null,null,264px,1)
+            +transform(scaleX(0.8))
+            width: 142px
+            @media only screen and (max-width: 600px)
+                width: 24vw
+                top: 50%
+                left: 50%
+                +transform(translate(calc(-50% + 6vw),calc(-50% - 11.2vw)) scaleX(0.8))
+        .text-left
+            font-size: .5em
+            letter-spacing: .18em
+            line-height: 1
+            @media only screen and (max-width: 600px)
+                font-size: 3vw          
+                -webkit-transform: scale(0.75)
+                -o-transform: scale(1)
+        .icon
+            +psa(216px,null,null,322px,1)
+            width: 28px
+            @media only screen and (max-width: 600px)
+                width: 4.5vw
+                top: 50%
+                left: 50%
+                +transform(translate(calc(-50% + 6vw),calc(-50% - 12.5vw)))
+            img
+                display: block
+                width: 100%
+    
+    .back
+        position: relative
+        .text
+            +psa(15.4%,null,null,50%,1)
+            +transform(translate(-50%,0) scaleX(0.8))
+        .text-back
+            padding-bottom: 8%
+            font-size: 1.2em
+            letter-spacing: .22em
+            margin-right: -.27em
+            line-height: 1
+            @media only screen and (max-width: 600px)
+                font-size: 3vw
+        .back-static
+            font-size: 1.2em
+            letter-spacing: .22em
+            margin-right: -.27em
+            line-height: 1
+            @media only screen and (max-width: 600px)
+                font-size: 3vw
+    
+    .right
+        position: relative
+        .text
+            +psa(228px,null,null,194px,1)
+            +transform(scaleX(0.8))
+            width: 142px
+            @media only screen and (max-width: 600px)
+                width: 24vw
+                top: 50%
+                left: 50%
+                +transform(translate(calc(-50% - 6vw),calc(-50% - 11.2vw)) scaleX(0.8))
+        .text-right
+            font-size: .5em
+            letter-spacing: .18em
+            line-height: 1
+            @media only screen and (max-width: 600px)
+                font-size: 3vw          
+                -webkit-transform: scale(0.75)
+                -o-transform: scale(1)
+        .icon
+            +psa(216px,null,null,255px,1)
+            width: 28px
+            @media only screen and (max-width: 600px)
+                width: 4.5vw
+                top: 50%
+                left: 50%
+                +transform(translate(calc(-50% - 5.2vw),calc(-50% - 12.5vw)))
+            img
+                display: block
+                width: 100%
+    
+    &.font-white
+        .text
+            color: white
+            &::after
+                background-color: white
+.save-mask
+    +psa(0,null,null,0,9999)
+    width: 100%
+    height: 100%

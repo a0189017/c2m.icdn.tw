@@ -1,0 +1,64 @@
+@charset "UTF-8"
+@import compass
+@import "_variable.sass"
+@import "_mixin.sass"
+.login
+    display: flex
+    width: 940px
+    margin: 40px auto 60px
+    background-color: white
+    +box-shadow(0 2px 4px 0 rgba(155,155,155,0.44))
+    +border-radius(4px)
+    overflow: hidden
+    +breakpoint(min_pc)
+        width: 400px
+    +breakpoint(mobile)
+        margin: 0 auto
+        width: 100%
+
+    .left
+        width: 40%
+        background-repeat: repeat
+        +breakpoint(min_pc)
+            display: none
+        .left-inner
+            padding: 110px 60px 90px 90px
+            color: $font-dark
+            background-color: rgba(243,243,243,.1)
+        i
+            margin-right: 8px
+            vertical-align: middle
+            font-size: 32px
+            color: $primary-color
+        h4
+            margin-bottom: 5px
+            font-size: 18px
+            font-weight: bold
+        p
+            padding-left: 40px
+            margin-bottom: 50px
+            font-size: 15px
+            color: $font-light
+            line-height: 1.6
+
+    .right
+        width: 60%
+        padding: 40px 60px
+        +breakpoint(min_pc)
+            width: 100%
+        +breakpoint(mobile)
+            padding: 40px 50px
+        form
+            margin-bottom: 30px
+        .form-group
+            max-width: none
+        .block-title
+            margin-bottom: 30px
+            font-size: 24px
+        .links-area
+            font-size: 15px
+            color: $font-light
+            span
+                line-height: 1.8
+                &:first-child
+                    color: $font-dark

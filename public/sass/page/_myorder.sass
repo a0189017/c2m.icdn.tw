@@ -1,0 +1,63 @@
+@charset "UTF-8"
+@import compass
+@import "_variable.sass"
+@import "_mixin.sass"
+.order-list
+    li
+        margin-bottom: 20px
+        padding-bottom: 20px
+        border-bottom: 1px solid #eee
+        &:last-child
+            border-bottom: 0
+            margin-bottom: 0
+        .img
+            width: 120px
+            +breakpoint(mobile)
+                width: 70px
+            img
+                display: block
+                width: 100%
+
+        .info
+            display: flex
+            justify-content: space-between
+            padding-left: 20px
+            font-size: 15px
+            line-height: 1.4
+            +calc('width','100% - 120px')
+            +breakpoint(pad)
+                display: block
+                padding-left: 15px
+            +breakpoint(mobile)
+                +calc('width','100% - 70px')
+            .info-detail
+                +calc('width','100% - 90px')
+                +breakpoint(pad)
+                    width: 100%
+                    margin-bottom: 10px
+                .title
+                    margin-bottom: 10px
+                    color: $font-darker
+                    +transition(color .3s)
+                    +breakpoint(pad)
+                        margin-bottom: 5px
+                .date
+                    color: $font-light
+            .price
+                width: 90px
+                color: $font-primary
+                text-align: right
+                +breakpoint(pad)
+                    width: 100%
+                    text-align: left
+        .order-link
+            display: flex
+            align-items: center
+            width: 100%
+            +breakpoint(pad)
+                align-items: flex-start
+            +breakpoint(up_pad)
+                &:hover
+                    .info
+                        .title
+                            color: $font-primary

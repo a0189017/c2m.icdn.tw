@@ -1,0 +1,100 @@
+@charset "UTF-8"
+@import compass
+@import "_variable.sass"
+@import "_mixin.sass"
+.pd
+    padding: 40px 30px
+    margin: 0 auto
+    width: 100%
+    max-width: $max-width
+    overflow: hidden
+    +breakpoint(min_pc)
+        padding: 0
+.pd-preview-slider,
+.pd-intro
+    position: relative
+.pd-preview-slider
+    float: left
+    width: 50%
+    +breakpoint(min_pc)
+        +psf($header-h,null,null,0,1)
+        float: none
+        width: 100%
+    .swiper-slide
+        width: 100%
+        height: 420px
+        +bg-cover(center)
+        +breakpoint(min_pc)
+            height: 75vw
+        +breakpoint(mobile)
+            height: 100vw
+    .swiper-wrapper
+        margin-bottom: 10px
+        +breakpoint(min_pc)
+            margin-bottom: 0
+    .swiper-button-next.swiper-button-white,
+    .swiper-button-prev.swiper-button-white
+        top: 220px
+        +breakpoint(min_pc)
+            top: 50%
+    .swiper-pagination.swiper-pagination-bullets
+        position: relative
+        bottom: auto
+        left: auto
+        text-align: left
+        +breakpoint(min_pc)
+            +psa(null,null,10px,0,2)
+            text-align: center
+        .thumb-item
+            margin: 0 8px 8px 0
+            display: inline-block
+            vertical-align: middle
+            width: 85px
+            height: 85px
+            +bg-cover(center)
+            +border-radius(0)
+            +breakpoint(min_pc)
+                width: 10px
+                height: 10px
+                background-color: white
+                background-image: none !important
+                +border-radius(50%)
+.pd-intro
+    float: right
+    padding: 50px 40px
+    width: 50%
+    min-height: 400px
+    background-color: white
+    +breakpoint(min_pc)
+        position: relative
+        z-index: 2
+        margin-top: 75vw
+        padding: 50px 30px
+        float: none
+        width: 100%
+    +breakpoint(mobile)
+        margin-top: 100vw
+
+    .pd-name
+        margin-bottom: 10px
+        font-size: 24px
+        line-height: 1.4
+    .pd-price
+        margin-bottom: 20px
+        font-size: 20px
+        font-weight: 500
+        color: $primary-color
+    .pd-desc
+        margin-bottom: 30px
+        font-size: 14px
+        color: $font-dark
+        line-height: 1.8
+    .design-btn-bottom
+        +breakpoint(min_pc)
+            display: none
+    .design-btn-top
+        margin-bottom: 20px
+        +breakpoint(up_min_pc)
+            display: none
+
+

@@ -1,0 +1,74 @@
+@mixin psa($top:null,$right:null,$bottom:null,$left:null,$zindex:null)
+	position: absolute
+	top: $top
+	right: $right
+	bottom: $bottom
+	left: $left
+	z-index: $zindex
+@mixin psf($top:null,$right:null,$bottom:null,$left:null,$zindex:null)
+	position: fixed
+	top: $top
+	right: $right
+	bottom: $bottom
+	left: $left
+	z-index: $zindex
+@mixin bg-cover($position:null)
+	background-position: $position
+	background-repeat: no-repeat
+	+background-size(cover)
+@mixin bg-contain($position:null)
+	background-position: $position
+	background-repeat: no-repeat
+	+background-size(contain)
+@mixin one-line-only
+	overflow: hidden
+	text-overflow : ellipsis
+	white-space : nowrap
+@mixin dis-one-line-only
+	overflow: visible
+	text-overflow : clip
+	white-space : normal
+@mixin calc($property, $expression)
+	#{$property}: -moz-calc(#{$expression})
+	#{$property}: -webkit-calc(#{$expression})
+	#{$property}: calc(#{$expression})
+@mixin breakpoint($point)
+	@if $point == up_max_width
+		@media only screen and (min-width: $max-width)
+			@content
+	@if $point == max_width
+		@media only screen and (max-width: $max-width)
+			@content
+	@if $point == up_pc
+		@media only screen and (min-width: 1910px)
+			@content
+	@if $point == pc
+		@media only screen and (max-width: 1910px)
+			@content
+	@if $point == up_min_pc
+		@media only screen and (min-width: 995px)
+			@content
+	@if $point == min_pc
+		@media only screen and (max-width: 995px)
+			@content
+	@if $point == up_pad
+		@media only screen and (min-width: 768px)
+			@content
+	@if $point == pad
+		@media only screen and (max-width: 768px)
+			@content
+	@if $point == up_mobile
+		@media only screen and (min-width: 525px)
+			@content
+	@if $point == mobile
+		@media only screen and (max-width: 525px)
+			@content
+	@if $point == min_mobile
+		@media only screen and (max-width: 320px)
+			@content
+@mixin breakpoint_spec($screen)
+	@media only screen and (max-width: $screen)
+		@content
+@mixin breakpoint_spec_up($screen)
+	@media only screen and (min-width: $screen)
+		@content

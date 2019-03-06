@@ -1,0 +1,58 @@
+@charset "UTF-8"
+@import compass
+@import "_variable.sass"
+@import "_mixin.sass"
+.checkout
+    .box
+        margin: 40px auto
+        width: 100%
+        max-width: 800px
+        +breakpoint(min_pc)
+            margin: 0
+            max-width: none
+
+    .ordered-list
+        .img
+            overflow: hidden
+            margin-bottom: 30px
+            img
+                float: left
+                display: block
+                width: 50%
+                +breakpoint(pad)
+                    width: 100%
+        .info
+            margin-bottom: 30px
+    .ordered-pd
+        display: flex
+        justify-content: space-between
+        padding: 30px 0
+        color: $font-dark
+        border-bottom: 1px solid #eee
+        font-weight: bold
+    .ordered-price
+        padding: 30px 0
+        border-bottom: 1px solid #eee
+        &:last-child
+            border-bottom: 0
+        .price
+            display: flex
+            justify-content: space-between
+            margin-bottom: 20px
+            &:last-child
+                margin-bottom: 0
+    .contact-info,
+    .recipient-info,
+    .pay-info,
+    .receipt-info
+        margin-bottom: 60px
+    .pay-info
+        .label-radio
+            img
+                display: inline-block
+                vertical-align: middle
+                width: 50px
+                +breakpoint(mobile)
+                    width: 32px
+    .agreement
+        margin-bottom: 30px
