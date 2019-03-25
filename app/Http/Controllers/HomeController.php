@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use DB;
 use App\Design;
 use App\Design_meta;
 use App\City;
@@ -34,8 +35,24 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function products()
-    {
-        return view('products');
+    {   
+         $item =DB::select('select * from item_metas' );
+        if(empty($item)) {
+            return redirect()->route('products')->with("error","Item not found!");
+        }
+        $pd_list = array();
+        foreach($item as $k => $i){
+            $img=unserialize($i->img);
+            array_push($pd_list,array(
+                'item_id' =>$i->item_id,
+                'pd_name' => $i->item_name,
+                'pd_price' => $i->price,
+                'pd_img' => $img[0]
+            ));
+        }
+
+        return view('products', compact('id', 'item','pd_list'));
+
     }
 
     public function product($id)
@@ -45,20 +62,22 @@ class HomeController extends Controller
         // $str = mb_convert_encoding($str, "UTF-8", "ASCII");
         // dd(str_slug($str));
 
-        $item = Item::find($id);
+        $item =collect(\DB::select('select * from item_metas where item_id=?',[$id]))->first();
         if(empty($item)) {
             return redirect()->route('products')->with("error","Item not found!");
         }
-        $item_image = Item_meta::where('item_id', $id)->where('meta_key', 'image')->get();
-        $item_desc = Item_meta::where('item_id', $id)->where('meta_key', 'desc')->first();
-        $item_desc_2 = Item_meta::where('item_id', $id)->where('meta_key', 'desc_2')->first();
 
-        return view('product', compact('id', 'item', 'item_image', 'item_desc', 'item_desc_2'));
+
+        return view('product', compact('id', 'item'));
     }
     
     public function design($id)
     {
-        $item = Item::find($id);
+        $item =collect(\DB::select('select * from item_metas where item_id=?',[$id]))->first();
+        if(empty($item)) {
+            return redirect()->route('products')->with("error","Item not found!");
+        }
+
         // dd($item);
         return view('design', compact('id', 'item'));
     }
@@ -73,9 +92,9 @@ class HomeController extends Controller
         if(empty($item)) {
             return redirect()->route('products')->with("error","Item not found!");
         }
-        $item_image = Item_meta::where('item_id', $id)->where('meta_key', 'image')->get();
-        $item_desc = Item_meta::where('item_id', $id)->where('meta_key', 'desc')->first();
-        $item_desc_2 = Item_meta::where('item_id', $id)->where('meta_key', 'desc_2')->first();
+        $item_image = DB::select('select * from item_metas where item_id=? and meta_key=?',[$id,'image']);
+        $item_desc = collect(\DB::select('select * from item_metas where item_id=? and meta_key=?',[$id,'desc']))->first();
+        $item_desc_2 = collect(\DB::select('select * from item_metas where item_id=? and meta_key=?',[$id,'desc_2']))->first();
         
         // TODO get item detail
 

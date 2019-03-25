@@ -148,7 +148,7 @@
                 </div>
             </div>
         </div>
-        <a href="javascript:;" id="submit" class="btn-pay">結帳 NT$ <span class="price">{{$item->amount}}</span> <i class="material-icons">&#xE5C8;</i></a>
+        <a href="javascript:;" id="submit" class="btn-pay">結帳 NT$ {{$item->price}} <span class="price">{{$item->amount}}</span> <i class="material-icons">&#xE5C8;</i></a>
     </div>
 </div>
 
