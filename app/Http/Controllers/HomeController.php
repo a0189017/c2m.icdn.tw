@@ -88,13 +88,13 @@ class HomeController extends Controller
         $city = City::all();
 
         // check item_id exists
-        $item = Item::find($id);
+        $item =collect(\DB::select('select * from item_metas where item_id=?',[$id]))->first();
         if(empty($item)) {
             return redirect()->route('products')->with("error","Item not found!");
         }
-        $item_image = DB::select('select * from item_metas where item_id=? and meta_key=?',[$id,'image']);
-        $item_desc = collect(\DB::select('select * from item_metas where item_id=? and meta_key=?',[$id,'desc']))->first();
-        $item_desc_2 = collect(\DB::select('select * from item_metas where item_id=? and meta_key=?',[$id,'desc_2']))->first();
+        $item_image = DB::select('select * from item_metas where item_id=? ',[$id]);
+        $item_desc = collect(\DB::select('select * from item_metas where item_id=?',[$id]))->first();
+        $item_desc_2 = collect(\DB::select('select * from item_metas where item_id=?',[$id]))->first();
         
         // TODO get item detail
 

@@ -47,7 +47,7 @@ class AdminController extends Controller
     public function orderShow($order_id)
     {
         if(Auth::user()->hasRole('manager')) {
-            $order = Order::with('items')->with('metas')->with('payment')
+            $order = Order::with('metas')->with('payment')
             ->orderBy('created_at', 'desc')
             ->where('order_id', $order_id)
             ->first();
@@ -58,7 +58,7 @@ class AdminController extends Controller
                 $meta[$_meta->meta_key] = $_meta->meta_value;
             }
 
-            $design = Design::with('item')->with('metas')->where('design_id', $meta['design_id'])->first();
+            $design = Design::with('metas')->where('design_id', $meta['design_id'])->first();
         
             return view('admin.order.read', compact([
                 'order', 'meta', 'design'

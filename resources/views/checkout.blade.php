@@ -18,13 +18,13 @@
                             <h2 class="pd-title">{{$item->item_name}}</h2>
                         </div>
                         <div class="price">
-                            $ {{$item->amount}}
+                            $ {{$item->price}}
                         </div>
                     </div>
                     <div class="ordered-price">
                         <div class="price">
                             <div>小計</div>
-                            <div>$ {{$item->amount*$quantity}}</div>
+                            <div>$ {{$item->price*$quantity}}</div>
                         </div>
                         <div class="price">
                             <div>運費 - 宅配</div>
@@ -34,7 +34,7 @@
                     <div class="ordered-price">
                         <div class="price">
                             <div>總計</div>
-                            <div>$ {{ $item->amount*$quantity + $shipping['fee'] }}</div>
+                            <div>$ {{ $item->price*$quantity + $shipping['fee'] }}</div>
                         </div>
                     </div>
                 </section>
